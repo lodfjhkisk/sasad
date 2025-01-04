@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرم تماس</title>
+    <title>فرم تماس خفن</title>
     <!-- استفاده از فونت Vazirmatn -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +17,7 @@
         /* Body */
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #121212; /* پس‌زمینه تاریک */
+            background-color: #0a0a0a; /* پس‌زمینه مشکی */
             color: #ffffff; /* متن سفید */
             display: flex;
             justify-content: center;
@@ -28,26 +28,28 @@
 
         /* فرم تماس */
         .contact-form {
-            background-color: #1e1e1e; /* پس‌زمینه فرم تاریک */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* گرادیان تاریک */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* حاشیه نازک */
         }
 
         .contact-form:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
         }
 
         .contact-form h1 {
             text-align: center;
-            margin-bottom: 25px;
-            font-size: 26px;
+            margin-bottom: 20px;
+            font-size: 24px;
             color: #ffffff; /* عنوان سفید */
             font-weight: 700;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         /* گروه‌های فرم */
@@ -67,13 +69,18 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #333333; /* حاشیه تاریک */
-            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* حاشیه نیمه شفاف */
+            border-radius: 10px;
             font-size: 14px;
             font-family: 'Vazirmatn', sans-serif;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            background-color: #2c2c2c; /* پس‌زمینه فیلد تاریک */
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05); /* پس‌زمینه نیمه شفاف */
             color: #ffffff; /* متن سفید */
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999999; /* متن placeholder خاکستری */
         }
 
         .form-group input:focus,
@@ -81,6 +88,7 @@
             border-color: #007bff;
             outline: none;
             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه روشن‌تر هنگام فوکوس */
         }
 
         .form-group textarea {
@@ -92,19 +100,22 @@
         button {
             width: 100%;
             padding: 12px;
-            background-color: #007bff;
+            background: linear-gradient(145deg, #007bff, #0056b3); /* گرادیان آبی */
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             font-family: 'Vazirmatn', sans-serif;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(145deg, #0056b3, #003d80); /* گرادیان آبی تیره‌تر */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         button:active {
@@ -119,13 +130,14 @@
 
         .thank-you h1 {
             color: #ffffff; /* عنوان سفید */
-            font-size: 26px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .thank-you p {
             color: #cccccc; /* متن خاکستری روشن */
-            font-size: 16px;
+            font-size: 14px;
         }
 
         /* حالت‌های واکنش‌گرا */
@@ -153,7 +165,7 @@
 <body>
     <!-- فرم تماس -->
     <div class="contact-form" id="contactForm">
-        <h1>فرم تماس</h1>
+        <h1>فرم تماس خفن</h1>
         <form action="https://formspree.io/f/xlddobqn" method="POST" onsubmit="showThankYou(event)">
             <div class="form-group">
                 <label for="name">نام:</label>
