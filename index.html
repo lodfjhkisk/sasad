@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم تماس</title>
+    <!-- استفاده از فونت Vazirmatn -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #121212; /* پس‌زمینه تاریک */
+            color: #ffffff; /* متن سفید */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* فرم تماس */
+        .contact-form {
+            background-color: #1e1e1e; /* پس‌زمینه فرم تاریک */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-form h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 26px;
+            color: #ffffff; /* عنوان سفید */
+            font-weight: 700;
+        }
+
+        /* گروه‌های فرم */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #cccccc; /* متن لیبل خاکستری روشن */
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333333; /* حاشیه تاریک */
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #2c2c2c; /* پس‌زمینه فیلد تاریک */
+            color: #ffffff; /* متن سفید */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* دکمه ارسال */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* صفحه تشکر */
+        .thank-you {
+            text-align: center;
+            display: none; /* ابتدا مخفی است */
+        }
+
+        .thank-you h1 {
+            color: #ffffff; /* عنوان سفید */
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .thank-you p {
+            color: #cccccc; /* متن خاکستری روشن */
+            font-size: 16px;
+        }
+
+        /* حالت‌های واکنش‌گرا */
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 20px;
+            }
+
+            .contact-form h1 {
+                font-size: 22px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- فرم تماس -->
+    <div class="contact-form" id="contactForm">
+        <h1>فرم تماس</h1>
+        <form action="https://formspree.io/f/xlddobqn" method="POST" onsubmit="showThankYou(event)">
+            <div class="form-group">
+                <label for="name">نام:</label>
+                <input type="text" id="name" name="name" placeholder="نام خود را وارد کنید" required>
+            </div>
+            <div class="form-group">
+                <label for="email">ایمیل:</label>
+                <input type="email" id="email" name="email" placeholder="ایمیل خود را وارد کنید" required>
+            </div>
+            <div class="form-group">
+                <label for="message">پیام:</label>
+                <textarea id="message" name="message" placeholder="پیام خود را بنویسید..." required></textarea>
+            </div>
+            <button type="submit">ارسال پیام</button>
+        </form>
+    </div>
+
+    <!-- صفحه تشکر -->
+    <div class="thank-you" id="thankYou">
+        <h1>پیام شما با موفقیت ارسال شد! 😊</h1>
+        <p>به زودی با شما تماس می‌گیریم.</p>
+    </div>
+
+    <script>
+        // تابع برای نمایش صفحه تشکر
+        function showThankYou(event) {
+            event.preventDefault(); // جلوگیری از رفرش صفحه
+
+            // مخفی کردن فرم
+            document.getElementById('contactForm').style.display = 'none';
+
+            // نمایش صفحه تشکر
+            document.getElementById('thankYou').style.display = 'block';
+
+            // ارسال اطلاعات به Formspree
+            const form = event.target;
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    console.log('اطلاعات با موفقیت ارسال شد!');
+                } else {
+                    console.error('خطا در ارسال اطلاعات!');
+                }
+            }).catch(error => {
+                console.error('خطا:', error);
+            });
+        }
+    </script>
+</body>
+</html>
